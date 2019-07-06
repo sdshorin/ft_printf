@@ -16,7 +16,7 @@ void printf(char *format, ...)
 	print_size = 0;
 	va_start(ap, format);
 	read_params(&param, format);
-	print_format_str(param, format);
+	print_format_str(param, format, ap);
 	delete_param(param);
 	va_end(ap);
 	return (print_size);
