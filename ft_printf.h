@@ -14,6 +14,7 @@ typedef struct	s_param {
 	char			L;
 	char			hash;
 	char			zero;
+	char			space;
 	char			minus;
 	char			plus;
 	char			minimum_size;

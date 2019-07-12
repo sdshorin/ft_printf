@@ -14,6 +14,7 @@ void printf(char *format, ...)
 	t_param *param;
 
 	print_size = 0;
+	param = 0;
 	va_start(ap, format);
 	read_params(&param, format);
 	print_format_str(param, format, ap);
