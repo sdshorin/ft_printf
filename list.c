@@ -11,9 +11,7 @@ t_param *new_param_list()
 	if (!new)
 		return (0);
 	new->conversion = 0;
-	new->hh = 0;
 	new->h = 0;
-	new->ll = 0;
 	new->l = 0;
 	new->L = 0;
 	new->hash = 0;

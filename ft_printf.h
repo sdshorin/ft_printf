@@ -1,15 +1,13 @@
 
 
 
-
+#include <stdarg.h>
 
 
 
 typedef struct	s_param {
 	char			conversion;
-	char			hh;
 	char			h;
-	char			ll;
 	char			l;
 	char			L;
 	char			hash;
@@ -17,7 +15,7 @@ typedef struct	s_param {
 	char			space;
 	char			minus;
 	char			plus;
-	char			minimum_size;
+	int				minimum_size;
 	char			precision;
 	struct s_param	*next;
 }				t_param;
