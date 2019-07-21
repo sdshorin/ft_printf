@@ -33,15 +33,18 @@ int read_params(t_param **param, char *format)
 {
 	t_param **last_param;
 
+	last_param = 0;
 	while (*format)
 	{
 		while (*format && *format != '%')
 			format++;
 		if (*format == '%')
+		{
 			if(add_param(last_param, &format))
 				return (1);
 			else if (!*param)
 				*param = *last_param;
+		}
 	}
 	return(0);
 }

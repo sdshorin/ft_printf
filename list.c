@@ -7,7 +7,7 @@ t_param *new_param_list()
 {
 	t_param *new;
 
-	new = (t_param*)malloc(size_of(t_param));
+	new = (t_param*)malloc(sizeof(t_param));
 	if (!new)
 		return (0);
 	new->conversion = 0;

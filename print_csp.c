@@ -10,23 +10,25 @@ int print_with_flug(char *str, t_param *param)
 	fill_char = ' ';
 	if (param->zero)
 		fill_char = '0';
-	str_len = ft_min(ft_strlen(str), param->precision);
-	if (param->minimum_size > str_len)
+	str_len = ft_strlen(str);
+	if (param->precision >= 0)
+		str_len = ft_min(str_len, param->precision);
+	if (param->minimum_size >= 0 && param->minimum_size > str_len)
 		if (param->minus)
 		{
 			write(1, str, str_len);
 			ft_write_char_many(fill_char, param->minimum_size - str_len);
+			return (param->minimum_size);
 		}
 		else
 		{
 			ft_write_char_many(fill_char, param->minimum_size - str_len);
 			write(1, str, str_len);
+			return (param->minimum_size);
 		}
 	else
 		write(1, str, str_len);
-	
-	return ();
-
+	return (str_len);
 }
 
 
