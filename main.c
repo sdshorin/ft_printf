@@ -3,5 +3,5 @@ int ft_printf(char*, ...);
 
 int main ()
 {
-	ft_printf("qwert");
+	ft_printf("qwert%s", "aa");
 }

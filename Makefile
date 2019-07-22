@@ -12,7 +12,8 @@
 
 NAME = ft_printf
 
-SOURCE = ft_printf.c list.c param.c print_format_str.c  main.c
+SOURCE = ft_printf.c list.c param.c parse_param.c  print_format_str.c  main.c\
+print_csp.c print_other.c
 
 OBJ = $(patsubst %.c,%.o,$(SOURCE))
 
@@ -21,7 +22,7 @@ LIB = -L libft -lft
 all: $(NAME)
 
 %.o: %.c
-	gcc -Wall -Wextra -Werror -c -o $@ $<
+	gcc -g -Wall -Wextra -Werror -c -o $@ $<
 
 $(NAME): $(OBJ)
 	make -C ./libft

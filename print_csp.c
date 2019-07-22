@@ -35,8 +35,9 @@ int print_with_flug(char *str, t_param *param)
 int print_char(t_param **param, va_list ap)
 {
 	char c;
-
-	c = va_arg(ap, char);
+	char l = (*param)->zero;
+	l = 0;
+	c = (char)va_arg(ap, int);
 	write(1, &c, 1);
 	return (1);
 }

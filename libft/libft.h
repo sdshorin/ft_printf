@@ -83,6 +83,8 @@ char			*ft_alltolower(char *str);
 int				ft_clamp(int value, int min, int max);
 int				ft_max(int a, int b);
 int				ft_min(int a, int b);
+char			ft_findchar(char *str, char target);
+void			ft_write_char_many(char filler, int size);
 
 typedef struct	s_list
 {
