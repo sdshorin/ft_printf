@@ -19,7 +19,7 @@ t_param *new_param_list()
 	new->zero = 0;
 	new->minus = 0;
 	new->plus = 0;
-	new->minimum_size = 0;
-	new->precision = 0;
+	new->minimum_size = -1;
+	new->precision = -1;
 	return (new);
 }

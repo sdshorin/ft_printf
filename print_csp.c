@@ -8,8 +8,6 @@ int print_with_flug(char *str, t_param *param)
 	char fill_char;
 
 	fill_char = ' ';
-	if (param->zero)
-		fill_char = '0';
 	str_len = ft_strlen(str);
 	if (param->precision >= 0)
 		str_len = ft_min(str_len, param->precision);
@@ -22,6 +20,8 @@ int print_with_flug(char *str, t_param *param)
 		}
 		else
 		{
+			if (param->zero)
+				fill_char = '0';
 			ft_write_char_many(fill_char, param->minimum_size - str_len);
 			write(1, str, str_len);
 			return (param->minimum_size);

@@ -10,7 +10,17 @@
 
 void pass_param(char **str)
 {
+	char *input_string;
+	t_param now_param;
+
 	(*str)++;
+	input_string = *str;
+	input_string = parse_param_flags(input_string, &now_param);
+	input_string = parse_param_width(input_string, &now_param);
+	input_string = parse_param_precision(input_string, &now_param);
+	input_string = parse_param_size(input_string, &now_param);
+	input_string = parse_param_type(input_string, &now_param);
+	*str = input_string;
 }
 
 int print_param2(t_param **param, char **str, va_list ap)
