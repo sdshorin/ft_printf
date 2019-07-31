@@ -25,12 +25,16 @@ ft_strsplit.c ft_strstr.c ft_strsub.c ft_strtrim.c ft_tolower.c ft_toupper.c \
 ft_atoi.c ft_alltolower.c ft_alltoup.c ft_clamp.c ft_max.c \
 ft_min.c get_next_line.c ft_findchar.c ft_write_char_many.c
 
+OBJ = $(patsubst %.c, %.o, $(SOURCE))
+
 all: $(NAME)
 
-$(NAME): 
-	gcc -Wall -Wextra -Werror -c -g $(SOURCE)
+$(NAME): $(OBJ)
 	ar rc $(NAME) $(SOURCE:.c=.o)
 	ranlib $(NAME)
+
+%.o: %.c
+	gcc -Wall -Wextra -Werror -c -o $@ $<
 
 clean:
 	/bin/rm -f $(SOURCE:.c=.o)

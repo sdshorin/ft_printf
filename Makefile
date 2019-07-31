@@ -22,7 +22,7 @@ LIB = -L libft -lft
 all: $(NAME)
 
 %.o: %.c
-	gcc -g -Wall -Wextra -Werror -c -o $@ $<
+	gcc -g -Wall -Wextra -c -o $@ $<
 
 $(NAME): $(OBJ)
 	make -C ./libft
