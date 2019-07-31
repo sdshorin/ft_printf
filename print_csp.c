@@ -35,10 +35,28 @@ int print_with_flug(char *str, t_param *param)
 int print_char(t_param **param, va_list ap)
 {
 	char c;
-	char l = (*param)->zero;
-	l = 0;
+
 	c = (char)va_arg(ap, int);
-	write(1, &c, 1);
+	char fill_char;
+
+	fill_char = ' ';
+	if ((*param)->minimum_size >= 1)
+		if ((*param)->minus)
+		{
+			write(1, &c, 1);
+			ft_write_char_many(fill_char, (*param)->minimum_size - 1);
+			return ((*param)->minimum_size);
+		}
+		else
+		{
+			if ((*param)->zero)
+				fill_char = '0';
+			ft_write_char_many(fill_char, (*param)->minimum_size - 1);
+			write(1, &c, 1);
+			return ((*param)->minimum_size);
+		}
+	else
+		write(1, &c, 1);
 	return (1);
 }
 
