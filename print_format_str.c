@@ -29,7 +29,7 @@ int print_param2(t_param **param, char **str, va_list ap)
 
 	print_size = 0;
 	if ((*param)->conversion == 'd')
-		print_size  = print_double(param, ap);	
+		print_size  = print_d(param, ap);	
 	else if ((*param)->conversion == 'i')
 		print_size  = print_int(param, ap);
 	else if ((*param)->conversion == 'o')
