@@ -20,3 +20,4 @@ void ptr_to_str(char *ptr_str, size_t ptr)
 		mask = mask >> 4;
 	}
 }
+

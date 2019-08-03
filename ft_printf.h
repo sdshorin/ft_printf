@@ -46,5 +46,7 @@ int print_float(t_param **param, va_list ap);
 
 
 void ptr_to_str(char *ptr_str, size_t ptr);
-
+int write_prenum(t_param *param, long long n);
+void write_num(t_param *param, long long n);
+int ft_num_size(long long n);
 
