@@ -5,8 +5,10 @@
 int ft_num_size(long long num)
 {
 	int size = 0;
-
-	while (num > 0)
+	
+	if (num > 0)
+		num = -num;
+	while (num < 0)
 	{
 		size++;
 		num /= 10;
@@ -74,9 +76,9 @@ int print_int(t_param **param, va_list ap)
 	if ((*param)->l > 1)
 		n = (long long)va_arg(ap, long long);
 	if ((*param)->h == 1)
-		n = (long long)va_arg(ap, int);
+		n = (long long)(short)va_arg(ap, int);
 	if ((*param)->h > 1)
-		n = (long long)va_arg(ap, int);
+		n = (long long)(char)va_arg(ap, int);
 	num_size = 0;
 	if ((*param)->plus || (*param)->space || n < 0)
 		num_size = 1;

@@ -1,16 +1,6 @@
 
 #include "ft_printf.h"
 
-int print_d(t_param **param, va_list ap)
-{
-
-	char c;
-	char l = (*param)->zero;
-	l = 0;
-	c = (char)va_arg(ap, int);
-	write(1, &c, 1);
-	return (1);
-}
 
 
 int print_o(t_param **param, va_list ap)
