@@ -50,3 +50,6 @@ int write_prenum(t_param *param, long long n);
 void write_num(t_param *param, long long n);
 int ft_num_size(long long n);
 
+int write_o_prenum(t_param *param);
+void write_o_num(t_param *param, unsigned long long n);
+int ft_o_num_size(unsigned long long n, t_param *param);
