@@ -39,7 +39,7 @@ int print_param2(t_param **param, char **str, va_list ap)
 	else if ((*param)->conversion == 'x')
 		print_size  = print_x(param, ap);
 	else if ((*param)->conversion == 'X')
-		print_size  = print_X(param, ap);
+		print_size  = print_x(param, ap);
 	else if ((*param)->conversion == 'f')
 		print_size  = print_float(param, ap);
 	*param = (*param)->next;
