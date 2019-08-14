@@ -4,6 +4,7 @@
 #include <stdarg.h>
 #include "libft/libft.h"
 
+#define LONG_NUM 5000
 
 typedef struct	s_param {
 	char			conversion;
@@ -19,6 +20,14 @@ typedef struct	s_param {
 	char			precision;
 	struct s_param	*next;
 }				t_param;
+
+typedef struct	s_long_num {
+	char	num[LONG_NUM];
+	int		point;
+	int		sig;
+	int		nan;
+	int		inf;
+}				t_long_num;
 
 int read_params(t_param **param, char *format);
 int print_format_str(t_param *param, char *str, va_list ap);
@@ -61,3 +70,12 @@ int ft_u_num_size(unsigned long long n);
 int write_x_prenum(t_param *param);
 void write_x_num(t_param *param, unsigned long long n);
 int ft_x_num_size(unsigned long long n, t_param *param);
+
+
+void long_comput_add_dig(char *num, int exp, int d);
+void long_comput_mult_two(t_long_num *num);
+void long_comput_div_two(t_long_num *num);
+
+
+int put_long_double(t_param **param, t_long_num *num);
+void double_to_string(long double d_num, t_long_num *l_num);

@@ -71,13 +71,13 @@ int print_int(t_param **param, va_list ap)
 
 	if ((*param)->l == 0 && (*param)->h == 0)
 		n = (long long)va_arg(ap, int);
-	if ((*param)->l == 1)
+	else if ((*param)->l == 1)
 		n = (long long)va_arg(ap, long);
-	if ((*param)->l > 1)
+	else if ((*param)->l > 1)
 		n = (long long)va_arg(ap, long long);
-	if ((*param)->h == 1)
+	else if ((*param)->h == 1)
 		n = (long long)(short)va_arg(ap, int);
-	if ((*param)->h > 1)
+	else //if ((*param)->h > 1)
 		n = (long long)(char)va_arg(ap, int);
 	num_size = 0;
 	if ((*param)->plus || (*param)->space || n < 0)
