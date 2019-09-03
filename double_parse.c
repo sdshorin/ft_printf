@@ -40,20 +40,12 @@ void parse_f(long double d_num, t_long_num *l_num)
 
 int is_double_inf_or_nan(int e, t_long_num *num)
 {
-	// TO DO
-
-
-	if (0)
-	{
-		num->nan = 1;
-		num->inf = 1;
-		return (1);
-	}
-	else
-	{
-		num->nan = 0;
-		num->inf = 0;
-	}
+	num->nan = 0;
+	num->inf = 0;
+	if (e == 32767 && ft_strequ(num->num, "8085774586302733229"))
+		return ((num->inf = 1));
+	if (e == 32767 && num->num[0])
+		return ((num->nan = 1));
 	return (0);
 }
 

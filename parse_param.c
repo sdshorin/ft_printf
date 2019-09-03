@@ -16,6 +16,8 @@ char *parse_param_flags(char *format, t_param *now_param)
 			now_param->zero = 1;
 		format++;
 	}
+	if (now_param->minus)
+		now_param->zero = 0;
 	return (format);
 }
 
