@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse_param.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bjesse <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/07 23:27:17 by bjesse            #+#    #+#             */
+/*   Updated: 2019/09/07 23:27:18 by bjesse           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
-char *parse_param_flags(char *format, t_param *now_param)
+char	*parse_param_flags(char *format, t_param *now_param)
 {
 	while (*format && ft_findchar(" +-0#", *format))
 	{
@@ -21,7 +33,7 @@ char *parse_param_flags(char *format, t_param *now_param)
 	return (format);
 }
 
-char *parse_param_width(char *input_string, t_param *now_param)
+char	*parse_param_width(char *input_string, t_param *now_param)
 {
 	if (ft_isdigit(*input_string))
 		now_param->minimum_size = ft_atoi(input_string);
@@ -30,7 +42,7 @@ char *parse_param_width(char *input_string, t_param *now_param)
 	return (input_string);
 }
 
-char *parse_param_precision(char *input_string, t_param *now_param)
+char	*parse_param_precision(char *input_string, t_param *now_param)
 {
 	if (*input_string == '.')
 	{
@@ -42,7 +54,7 @@ char *parse_param_precision(char *input_string, t_param *now_param)
 	return (input_string);
 }
 
-char *parse_param_size(char *input_string, t_param *now_param)
+char	*parse_param_size(char *input_string, t_param *now_param)
 {
 	int h_counter;
 	int l_counter;
@@ -51,7 +63,7 @@ char *parse_param_size(char *input_string, t_param *now_param)
 	h_counter = 0;
 	l_counter = 0;
 	ll_counter = 0;
-	while(ft_findchar("hlL", *input_string))
+	while (ft_findchar("hlL", *input_string))
 	{
 		if (*input_string == 'h' && !l_counter)
 			h_counter++;
@@ -67,7 +79,7 @@ char *parse_param_size(char *input_string, t_param *now_param)
 	return (input_string);
 }
 
-char *parse_param_type(char *input_string, t_param *now_param)
+char	*parse_param_type(char *input_string, t_param *now_param)
 {
 	if (ft_findchar("%cspdiouxXf", *input_string))
 	{
@@ -76,4 +88,3 @@ char *parse_param_type(char *input_string, t_param *now_param)
 	}
 	return (input_string);
 }
-
