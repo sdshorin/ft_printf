@@ -19,14 +19,14 @@ double_long_comput.c double_parse.c double_print.c double_print_nan.c
 
 OBJ = $(patsubst %.c,%.o,$(SOURCE))
 
-LIB = -L libft -lft
+LIB = libft/libft.a
 
 all: $(NAME)
 
 
 $(NAME): $(OBJ)
 	make -C ./libft
-	ar rc $(NAME) $(SOURCE:.c=.o)
+	ar rc $(NAME) $(SOURCE:.c=.o) $(LIB)
 	ranlib $(NAME)
 
 %.o: %.c
