@@ -1,12 +1,21 @@
-
-
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   double_parse.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bjesse <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/07 22:40:41 by bjesse            #+#    #+#             */
+/*   Updated: 2019/09/07 22:40:42 by bjesse           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void get_e_and_sig(long double num, int *e, int *sig)
+void	get_e_and_sig(long double num, int *e, int *sig)
 {
 	unsigned char *bits;
-	
+
 	bits = (unsigned char*)(void*)&num;
 	bits += 8;
 	*e = *bits;
@@ -15,11 +24,11 @@ void get_e_and_sig(long double num, int *e, int *sig)
 	*sig = *bits & 128;
 }
 
-void parse_f(long double d_num, t_long_num *l_num)
+void	parse_f(long double d_num, t_long_num *l_num)
 {
-	int i;
-	int j;
-	unsigned char *bits;
+	int				i;
+	int				j;
+	unsigned char	*bits;
 
 	bits = ((unsigned char*)(void*)&d_num) + 7;
 	i = 0;
@@ -38,7 +47,7 @@ void parse_f(long double d_num, t_long_num *l_num)
 	}
 }
 
-int is_double_inf_or_nan(int e, t_long_num *num)
+int		is_double_inf_or_nan(int e, t_long_num *num)
 {
 	num->nan = 0;
 	num->inf = 0;
@@ -49,20 +58,19 @@ int is_double_inf_or_nan(int e, t_long_num *num)
 	return (0);
 }
 
-
-void fill_zero(t_long_num *l_num)
+void	fill_zero(t_long_num *l_num)
 {
-	int pos;
+	int	pos;
 
 	pos = l_num->point;
 	while (!l_num->num[pos] && pos >= 0)
 		l_num->num[pos--] = '0';
 }
 
-void double_to_string(long double d_num, t_long_num *l_num)
+void	double_to_string(long double d_num, t_long_num *l_num)
 {
 	int e;
-	
+
 	ft_memset(l_num->num, '\0', LONG_NUM);
 	l_num->point = 0;
 	get_e_and_sig(d_num, &e, &(l_num->sig));

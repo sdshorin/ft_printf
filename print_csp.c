@@ -1,11 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   print_csp.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bjesse <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/07 23:15:20 by bjesse            #+#    #+#             */
+/*   Updated: 2019/09/07 23:15:21 by bjesse           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "ft_printf.h"
 
-
-int print_with_flug(char *str, t_param *param)
+int		print_with_flug(char *str, t_param *param)
 {
-	int str_len;
-	char fill_char;
+	int		str_len;
+	char	fill_char;
 
 	fill_char = ' ';
 	str_len = ft_strlen(str);
@@ -31,14 +41,12 @@ int print_with_flug(char *str, t_param *param)
 	return (str_len);
 }
 
-
-int print_char(t_param **param, va_list ap)
+int		print_char(t_param **param, va_list ap)
 {
-	char c;
+	char	c;
+	char	fill_char;
 
 	c = (char)va_arg(ap, int);
-	char fill_char;
-
 	fill_char = ' ';
 	if ((*param)->minimum_size >= 1)
 		if ((*param)->minus)
@@ -60,12 +68,10 @@ int print_char(t_param **param, va_list ap)
 	return (1);
 }
 
-
-
-int  print_str(t_param **param, va_list ap)
+int		print_str(t_param **param, va_list ap)
 {
-	char *str;
-	int str_size;
+	char	*str;
+	int		str_size;
 
 	str = va_arg(ap, char*);
 	if (!str)
@@ -73,5 +79,3 @@ int  print_str(t_param **param, va_list ap)
 	str_size = print_with_flug(str, *param);
 	return (str_size);
 }
-
-

@@ -46,11 +46,11 @@ char *parse_param_size(char *input_string, t_param *now_param)
 {
 	int h_counter;
 	int l_counter;
-	int L_counter;
+	int ll_counter;
 
 	h_counter = 0;
 	l_counter = 0;
-	L_counter = 0;
+	ll_counter = 0;
 	while(ft_findchar("hlL", *input_string))
 	{
 		if (*input_string == 'h' && !l_counter)
@@ -58,12 +58,12 @@ char *parse_param_size(char *input_string, t_param *now_param)
 		if (*input_string == 'l' && !h_counter)
 			l_counter++;
 		if (*input_string == 'L')
-			L_counter++;
+			ll_counter++;
 		input_string++;
 	}
 	now_param->h = h_counter;
 	now_param->l = l_counter;
-	now_param->L = L_counter;
+	now_param->ll = ll_counter;
 	return (input_string);
 }
 

@@ -1,15 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   param.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bjesse <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/07 23:13:55 by bjesse            #+#    #+#             */
+/*   Updated: 2019/09/07 23:13:56 by bjesse           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
-
-
-
-
-
-
-int add_param(t_param **param, char **format)
+int		add_param(t_param **param, char **format)
 {
-	t_param *now_param;
-	char *input_string;
+	t_param		*now_param;
+	char		*input_string;
 
 	(*format)++;
 	now_param = new_param_list();
@@ -27,9 +33,7 @@ int add_param(t_param **param, char **format)
 	return (0);
 }
 
-
-
-int read_params(t_param **param, char *format)
+int		read_params(t_param **param, char *format)
 {
 	t_param *last_param;
 
@@ -40,11 +44,11 @@ int read_params(t_param **param, char *format)
 			format++;
 		if (*format == '%')
 		{
-			if(add_param(&last_param, &format))
+			if (add_param(&last_param, &format))
 				return (1);
 			if (!*param)
 				*param = last_param;
 		}
 	}
-	return(0);
+	return (0);
 }

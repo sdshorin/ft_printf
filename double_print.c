@@ -1,9 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   double_print.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bjesse <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/07 22:43:09 by bjesse            #+#    #+#             */
+/*   Updated: 2019/09/07 22:43:10 by bjesse           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int get_double_num_size(t_param **param, t_long_num *num)
+int		get_double_num_size(t_param **param, t_long_num *num)
 {
-	int size = 0;
+	int size;
+
+	size = 0;
 	if (num->sig || (*param)->plus || (*param)->space)
 		size++;
 	if ((*param)->precision > 0 || (*param)->hash)
@@ -12,7 +25,7 @@ int get_double_num_size(t_param **param, t_long_num *num)
 	return (size);
 }
 
-int print_double_prenum(t_param **param, t_long_num *num)
+int		print_double_prenum(t_param **param, t_long_num *num)
 {
 	if (num->sig)
 	{
@@ -31,29 +44,30 @@ int print_double_prenum(t_param **param, t_long_num *num)
 	return (0);
 }
 
-int put_long_double_whide(t_param **param, t_long_num *num){
+int		put_long_double_whide(t_param **param, t_long_num *num)
+{
 	int len;
 
 	len = get_double_num_size(param, num);
 	if ((*param)->zero)
 	{
 		print_double_prenum(param, num);
-		ft_write_char_many('0',(*param)->minimum_size - len);
+		ft_write_char_many('0', (*param)->minimum_size - len);
 		print_long_double(param, num);
 		return (len);
 	}
-	ft_write_char_many(' ',(*param)->minimum_size - len);
+	ft_write_char_many(' ', (*param)->minimum_size - len);
 	print_double_prenum(param, num);
 	print_long_double(param, num);
 	return (len);
 }
 
-int put_long_double(t_param **param, t_long_num *num)
+int		put_long_double(t_param **param, t_long_num *num)
 {
 	int len;
 
 	if (num->inf || num->nan)
-		return print_double_nan_inf(param, num);
+		return (print_double_nan_inf(param, num));
 	len = get_double_num_size(param, num);
 	if ((*param)->minimum_size < len)
 	{
@@ -65,14 +79,14 @@ int put_long_double(t_param **param, t_long_num *num)
 	{
 		print_double_prenum(param, num);
 		print_long_double(param, num);
-		ft_write_char_many(' ',(*param)->minimum_size - len);
+		ft_write_char_many(' ', (*param)->minimum_size - len);
 		return ((*param)->minimum_size);
 	}
 	put_long_double_whide(param, num);
 	return ((*param)->minimum_size);
 }
 
-int print_long_double(t_param **param, t_long_num *num)
+int		print_long_double(t_param **param, t_long_num *num)
 {
 	int i;
 
@@ -88,6 +102,6 @@ int print_long_double(t_param **param, t_long_num *num)
 		i--;
 	}
 	if ((*param)->precision - num->point > 0)
-		ft_write_char_many('0',(*param)->precision - num->point);
-	return get_double_num_size(param, num);
+		ft_write_char_many('0', (*param)->precision - num->point);
+	return (get_double_num_size(param, num));
 }

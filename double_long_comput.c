@@ -1,10 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   double_long_comput.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bjesse <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/07 22:39:45 by bjesse            #+#    #+#             */
+/*   Updated: 2019/09/07 22:39:46 by bjesse           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "ft_printf.h"
 
-
-void long_comput_add_dig(char *num, int exp, int d)
+void	long_comput_add_dig(char *num, int exp, int d)
 {
-	// d принадлежит [0,9]
 	while (exp < LONG_NUM)
 	{
 		if (num[exp] + d > '9')
@@ -19,13 +28,12 @@ void long_comput_add_dig(char *num, int exp, int d)
 				num[exp] += d;
 			else
 				num[exp] = '0' + d;
-			break;
+			break ;
 		}
 	}
 }
 
-
-void long_comput_div_two(t_long_num *num)
+void	long_comput_div_two(t_long_num *num)
 {
 	int in_memory;
 	int temp_in_memory;
@@ -46,7 +54,7 @@ void long_comput_div_two(t_long_num *num)
 		num->point++;
 }
 
-void long_comput_mult_two(t_long_num *num)
+void	long_comput_mult_two(t_long_num *num)
 {
 	int in_memory;
 	int temp_in_memory;
