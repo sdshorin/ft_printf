@@ -6,6 +6,10 @@ int ft_x_num_size(unsigned long long num, t_param *param)
 {
 	int size = 0;
 	
+	if (num == (unsigned long long)-1 && param->h == 1)
+		return (4);
+	if (num == (unsigned long long)-1 && param->h == 2)
+		return (2);
 	if (num == 0)
 		size++;
 	if (param->hash && num != 0)

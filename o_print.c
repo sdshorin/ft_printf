@@ -25,6 +25,27 @@ void put_o_long_num(unsigned long long n)
 	}
 }
 
+void put_o_short_num(unsigned short n)
+{
+	if (n < 8)
+		ft_putchar('0' + n);
+	else
+	{
+		put_o_short_num(n / 8);
+		ft_putchar('0' + ( n % 8));
+	}
+}
+
+void put_o_char_num(unsigned char n)
+{
+	if (n < 8)
+		ft_putchar('0' + n);
+	else
+	{
+		put_o_char_num(n / 8);
+		ft_putchar('0' + ( n % 8));
+	}
+}
 
 void write_o_num(t_param *param, unsigned long long n)
 {
@@ -35,5 +56,10 @@ void write_o_num(t_param *param, unsigned long long n)
 	num_size = ft_o_num_size(n, param);
 	if (param->precision > num_size)
 		ft_write_char_many('0',param->precision - num_size);
-	put_o_long_num(n);
+	if (param->h == 1)
+		put_o_short_num(n);
+	else if (param->h > 1)
+		put_o_char_num(n);
+	else
+		put_o_long_num(n);
 }

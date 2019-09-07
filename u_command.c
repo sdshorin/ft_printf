@@ -21,7 +21,7 @@ int ft_u_num_size(unsigned long long num)
 int print_u_zero(t_param *param)
 {
 		ft_write_char_many(' ', param->minimum_size);
-	return (param->minimum_size);
+	return (ft_max(0, param->minimum_size));
 }
 
 int print_u_with_whide(t_param **param, unsigned long long n, int num_size)
