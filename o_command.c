@@ -77,13 +77,13 @@ int print_o(t_param **param, va_list ap)
 
 	if ((*param)->l == 0 && (*param)->h == 0)
 		n = (unsigned long long)va_arg(ap, unsigned int);
-	if ((*param)->l == 1)
+	else if ((*param)->l == 1)
 		n = (unsigned long long)va_arg(ap, unsigned long);
-	if ((*param)->l > 1)
+	else if ((*param)->l > 1)
 		n = (unsigned long long)va_arg(ap, unsigned long long);
-	if ((*param)->h == 1)
+	else if ((*param)->h == 1)
 		n = (unsigned long long)(short)va_arg(ap, unsigned int);
-	if ((*param)->h > 1)
+	else
 		n = (unsigned long long)(unsigned char)va_arg(ap, unsigned int);
 	num_size = ft_max((*param)->precision, ft_o_num_size(n, *param));
 	if ((*param)->precision == 0 && n == 0)

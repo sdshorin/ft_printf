@@ -54,13 +54,13 @@ int print_u(t_param **param, va_list ap)
 
 	if ((*param)->l == 0 && (*param)->h == 0)
 		n = (unsigned long long)va_arg(ap, unsigned int);
-	if ((*param)->l == 1)
+	else if ((*param)->l == 1)
 		n = (unsigned long long)va_arg(ap, unsigned long);
-	if ((*param)->l > 1)
+	else if ((*param)->l > 1)
 		n = (unsigned long long)va_arg(ap, unsigned long long);
-	if ((*param)->h == 1)
+	else if ((*param)->h == 1)
 		n = (unsigned long long)(unsigned short)va_arg(ap, unsigned int);
-	if ((*param)->h > 1)
+	else
 		n = (unsigned long long)(unsigned char)va_arg(ap, unsigned int);
 	num_size = 0;
 	num_size += ft_max((*param)->precision, ft_u_num_size(n));
