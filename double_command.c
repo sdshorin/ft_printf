@@ -10,20 +10,22 @@ int round_double(t_long_num *num, int position){
 	int start;
 	int rounding_num;
 
-	start = num->point - position;
-	rounding_num = start;
-	if (num->num[start--] != '5')
+	start = num->point - position - 1;
+	rounding_num = start + 1;
+	if (num->num[start] != '5')
 		return (0);
 	while (start >= 0)
 	{
-		if (num->num[start] > '5')
+		if (num->num[start] > '0')
 			return (num->num[rounding_num]++);
-		else if (num->num[start] < '5')
-			return (0);
+		//else if (num->num[start] < '5')
+		//	return (0);
 		start--;
 	}
-	if ((num->num[rounding_num] + 1) % 2 == 0)
+	if ((num->num[rounding_num] - '0' + 1) % 2 == 0)
 		return (num->num[rounding_num]++);
+	else
+		return (num->num[rounding_num]--);
 	return (0);
 }
 
@@ -44,6 +46,9 @@ int print_float(t_param **param, va_list ap)
 	if ((*param)->precision == -1)
 		(*param)->precision = 6;
 	double_to_string(n, &num);
-
+	if (num.point > (*param)->precision)
+	{
+		round_double(&num, (*param)->precision);
+	}
 	return put_long_double(param, &num);
 }

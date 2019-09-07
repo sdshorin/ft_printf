@@ -6,6 +6,7 @@
 
 #define LONG_NUM 5000
 
+
 typedef struct	s_param {
 	char			conversion;
 	char			h;
@@ -28,6 +29,8 @@ typedef struct	s_long_num {
 	int		nan;
 	int		inf;
 }				t_long_num;
+
+int ft_printf(char *format, ...);
 
 int read_params(t_param **param, char *format);
 int print_format_str(t_param *param, char *str, va_list ap);
@@ -79,3 +82,6 @@ void long_comput_div_two(t_long_num *num);
 
 int put_long_double(t_param **param, t_long_num *num);
 void double_to_string(long double d_num, t_long_num *l_num);
+
+int print_double_nan_inf(t_param **param, t_long_num *num);
+int print_long_double(t_param **param, t_long_num *num);
