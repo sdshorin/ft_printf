@@ -6,6 +6,8 @@ void ptr_to_str(char *ptr_str, size_t ptr)
 	char *ox_char;
 	int i;
 
+	if (!ptr)
+		ptr_str[0] = '0';
 	i = sizeof(size_t*)*8;
 	ox_char = "0123456789abcdef";
 	mask = (size_t)15;

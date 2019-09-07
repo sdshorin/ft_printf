@@ -21,5 +21,19 @@ t_param *new_param_list()
 	new->plus = 0;
 	new->minimum_size = -1;
 	new->precision = -1;
+	new->next = 0;
 	return (new);
+}
+
+int delete_param(t_param *param)
+{
+	t_param *next;
+
+	while (param)
+	{
+		next = param->next;
+		free(param);
+		param = next;
+	}
+	return (0);
 }

@@ -69,7 +69,7 @@ char *parse_param_size(char *input_string, t_param *now_param)
 
 char *parse_param_type(char *input_string, t_param *now_param)
 {
-	if (ft_findchar("cspdiouxXf", *input_string))
+	if (ft_findchar("%cspdiouxXf", *input_string))
 	{
 		now_param->conversion = *input_string;
 		input_string++;

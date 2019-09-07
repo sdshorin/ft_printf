@@ -5,7 +5,7 @@
 
 // va_arg(ap, char *);
 
-
+#include <stdio.h>
 
 int ft_printf(char *format, ...)
 {
@@ -18,7 +18,8 @@ int ft_printf(char *format, ...)
 	va_start(ap, format);
 	read_params(&param, format);
 	print_size = print_format_str(param, format, ap);
-	//delete_param(param);
+
+	delete_param(param);
 	va_end(ap);
 	return (print_size);
 }

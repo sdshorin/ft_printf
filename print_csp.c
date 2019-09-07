@@ -68,6 +68,8 @@ int  print_str(t_param **param, va_list ap)
 	int str_size;
 
 	str = va_arg(ap, char*);
+	if (!str)
+		str = "(null)";
 	str_size = print_with_flug(str, *param);
 	return (str_size);
 }
@@ -102,6 +104,8 @@ int print_ptr(t_param **param, va_list ap)
 	ft_memset(ptr_str, 0, 100);
 	ptr = (size_t)va_arg(ap, void*);
 	ptr_to_str(*(&ptr_str), ptr);
+	if (!ptr)
+		ptr_str[2] = '0';
 	str_len = ft_strlen(ptr_str);
 	if ((*param)->minimum_size >= str_len)
 		return print_ptr_with_flugs(param, ptr_str);

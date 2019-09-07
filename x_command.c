@@ -6,7 +6,9 @@ int ft_x_num_size(unsigned long long num, t_param *param)
 {
 	int size = 0;
 	
-	if (param->hash)
+	if (num == 0)
+		size++;
+	if (param->hash && num != 0)
 		size += 2;
 	while (num > 0)
 	{
@@ -21,14 +23,14 @@ int ft_x_num_size(unsigned long long num, t_param *param)
 int print_x_zero(t_param *param)
 {
 	ft_write_char_many(' ', param->minimum_size);
-	return (param->minimum_size);
+	return (ft_max(param->minimum_size, 0));
 }
 
 int print_x_with_whide(t_param **param, unsigned long long n, int num_size)
 {	
 	if ((*param)->minus)
 	{
-		write_x_prenum(*param);
+		write_x_prenum(*param, n);
 		write_x_num(*param, n);
 		ft_write_char_many(' ', (*param)->minimum_size  - num_size);
 	}
@@ -36,14 +38,14 @@ int print_x_with_whide(t_param **param, unsigned long long n, int num_size)
 	{
 		if ((*param)->zero && (*param)->precision == -1)
 		{
-			write_x_prenum(*param);
+			write_x_prenum(*param, n);
 			ft_write_char_many('0', (*param)->minimum_size  - num_size);
 			write_x_num(*param, n);
 		}
 		else
 		{
 			ft_write_char_many(' ', (*param)->minimum_size  - num_size);
-			write_x_prenum(*param);
+			write_x_prenum(*param, n);
 			write_x_num(*param, n);
 		}
 	}
@@ -70,7 +72,7 @@ int print_x(t_param **param, va_list ap)
 		return print_x_zero(*param);
 	if ((*param)->minimum_size >= num_size)
 		return (print_x_with_whide(param, n, num_size));
-	write_x_prenum(*param);
+	write_x_prenum(*param, n);
 	write_x_num(*param, n);
 	return(num_size);
 }

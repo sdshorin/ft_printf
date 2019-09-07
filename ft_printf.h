@@ -3,6 +3,7 @@
 #include <unistd.h>
 #include <stdarg.h>
 #include "libft/libft.h"
+#include <stdio.h>
 
 #define LONG_NUM 5000
 
@@ -33,6 +34,7 @@ typedef struct	s_long_num {
 int ft_printf(char *format, ...);
 
 int read_params(t_param **param, char *format);
+int delete_param(t_param *param);
 int print_format_str(t_param *param, char *str, va_list ap);
 
 t_param *new_param_list();
@@ -44,7 +46,7 @@ char *parse_param_size(char *input_string, t_param *now_param);
 char *parse_param_type(char *input_string, t_param *now_param);
 
 
-
+int print_percent(t_param **param);
 int print_char(t_param **param, va_list ap);
 int print_str(t_param **param, va_list ap);
 int print_ptr(t_param **param, va_list ap);
@@ -70,7 +72,7 @@ int ft_o_num_size(unsigned long long n, t_param *param);
 void write_u_num(t_param *param, unsigned long long n);
 int ft_u_num_size(unsigned long long n);
 
-int write_x_prenum(t_param *param);
+int write_x_prenum(t_param *param, unsigned long long n);
 void write_x_num(t_param *param, unsigned long long n);
 int ft_x_num_size(unsigned long long n, t_param *param);
 

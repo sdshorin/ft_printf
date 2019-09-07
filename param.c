@@ -12,8 +12,6 @@ int add_param(t_param **param, char **format)
 	char *input_string;
 
 	(*format)++;
-	if (*(*format) == '%')
-		return (0);
 	now_param = new_param_list();
 	if (!now_param)
 		return (1);

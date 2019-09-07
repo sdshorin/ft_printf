@@ -6,6 +6,8 @@ int ft_num_size(long long num)
 {
 	int size = 0;
 	
+	if (num == 0)
+		size++;
 	if (num > 0)
 		num = -num;
 	while (num < 0)

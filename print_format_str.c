@@ -61,6 +61,8 @@ int print_param(t_param **param, char **str, va_list ap)
 		print_size  = print_str(param, ap);
 	else if ((*param)->conversion == 'p')
 		print_size  = print_ptr(param, ap);
+	else if ((*param)->conversion == '%')
+		print_size  = print_percent(param);
 	else
 		return print_param2(param, str, ap);
 	

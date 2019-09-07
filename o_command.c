@@ -8,6 +8,8 @@ int ft_o_num_size(unsigned long long num, t_param *param)
 	
 	if (param->hash)
 		size++;
+	if (num == 0)
+		size++;
 	while (num > 0)
 	{
 		size++;
