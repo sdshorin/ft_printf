@@ -6,11 +6,11 @@ int ft_o_num_size(unsigned long long num, t_param *param)
 {
 	int size = 0;
 	
-	if (num == (unsigned long long)-1 && param->h == 1)
-		return (6);
-	if (num == (unsigned long long)-1 && param->h == 2)
-		return (3);
-	if (param->hash && num != 0)
+	if (param->h == 1)
+		return (ft_o_num_size_h(num, param));
+	if (param->h == 2)
+		return (ft_o_num_size_hh(num, param));
+	if (param->hash && (num != 0 || param->precision > 0))
 		size++;
 	if (num == 0)
 		size++;

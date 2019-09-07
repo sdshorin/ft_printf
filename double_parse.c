@@ -49,10 +49,20 @@ int is_double_inf_or_nan(int e, t_long_num *num)
 	return (0);
 }
 
+
+void fill_zero(t_long_num *l_num)
+{
+	int pos;
+
+	pos = l_num->point;
+	while (!l_num->num[pos] && pos >= 0)
+		l_num->num[pos--] = '0';
+}
+
 void double_to_string(long double d_num, t_long_num *l_num)
 {
 	int e;
-
+	
 	ft_memset(l_num->num, '\0', LONG_NUM);
 	l_num->point = 0;
 	get_e_and_sig(d_num, &e, &(l_num->sig));
@@ -73,4 +83,5 @@ void double_to_string(long double d_num, t_long_num *l_num)
 			e++;
 		}
 	}
+	fill_zero(l_num);
 }

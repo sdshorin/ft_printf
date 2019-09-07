@@ -12,14 +12,15 @@ int round_double(t_long_num *num, int position){
 
 	start = num->point - position - 1;
 	rounding_num = start + 1;
-	if (num->num[start] != '5')
+	if (num->num[start] < '5')
 		return (0);
 	while (start >= 0)
 	{
 		if (num->num[start] > '0')
-			return (num->num[rounding_num]++);
-		//else if (num->num[start] < '5')
-		//	return (0);
+		{
+			long_comput_add_dig(num->num, rounding_num, 1);
+			return (0);
+		}
 		start--;
 	}
 	if ((num->num[rounding_num] - '0' + 1) % 2 == 0)

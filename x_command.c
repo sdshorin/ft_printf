@@ -10,9 +10,9 @@ int ft_x_num_size(unsigned long long num, t_param *param)
 		return (4);
 	if (num == (unsigned long long)-1 && param->h == 2)
 		return (2);
-	if (num == 0)
+	if (num == 0 && (!param->ptr_shadow || param->precision != 0))
 		size++;
-	if (param->hash && num != 0)
+	if (param->hash && (num != 0 || param->ptr_shadow))
 		size += 2;
 	while (num > 0)
 	{
@@ -61,18 +61,21 @@ int print_x(t_param **param, va_list ap)
 	unsigned long long n;
 	int num_size;
 
+	n = 0;
 	if ((*param)->l == 0 && (*param)->h == 0)
 		n = (unsigned long long)va_arg(ap, unsigned int);
-	if ((*param)->l == 1)
+	else if ((*param)->l == 1)
 		n = (unsigned long long)va_arg(ap, unsigned long);
-	if ((*param)->l > 1)
+	else if ((*param)->l > 1)
 		n = (unsigned long long)va_arg(ap, unsigned long long);
-	if ((*param)->h == 1)
+	else if ((*param)->h == 1)
 		n = (unsigned long long)(short)va_arg(ap, unsigned int);
-	if ((*param)->h > 1)
+	else if ((*param)->h > 1)
 		n = (unsigned long long)(unsigned char)va_arg(ap, unsigned int);
 	num_size = ft_max((*param)->precision, ft_x_num_size(n, *param));
-	if ((*param)->precision == 0 && n == 0)
+	if (num_size == (*param)->precision && (*param)->hash && (n || (*param)->ptr_shadow))
+		num_size += 2;
+	if ((*param)->precision == 0 && n == 0 && !(*param)->ptr_shadow)
 		return print_x_zero(*param);
 	if ((*param)->minimum_size >= num_size)
 		return (print_x_with_whide(param, n, num_size));

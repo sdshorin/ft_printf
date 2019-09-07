@@ -22,6 +22,7 @@ t_param *new_param_list()
 	new->minimum_size = -1;
 	new->precision = -1;
 	new->next = 0;
+	new->ptr_shadow = 0;
 	return (new);
 }
 

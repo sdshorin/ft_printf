@@ -5,7 +5,7 @@
 
 int write_x_prenum(t_param *param, unsigned long long n)
 {
-	if (n == 0)
+	if (n == 0 && !param->ptr_shadow)
 		return (0);
 	if (param->hash && param->conversion == 'x')
 		return (write(1, "0x", 2));
@@ -70,11 +70,16 @@ void write_x_num(t_param *param, unsigned long long n)
 {
 	int num_size;
 
-	// if (n == 0 && param->hash)
-	// 	return ;
+	if (param->ptr_shadow && n == 0 && param->precision == 0)
+		return ;
 	num_size = ft_x_num_size(n, param);
 	if (param->precision > num_size)
-		ft_write_char_many('0',param->precision - num_size);
+	{
+		if (param->hash  && (n || param->ptr_shadow)) 
+			ft_write_char_many('0',param->precision - num_size + 2);
+		else
+			ft_write_char_many('0',param->precision - num_size);
+	}
 	if (param->h == 1)
 		put_x_short_num(n, param);
 	else if (param->h > 1)

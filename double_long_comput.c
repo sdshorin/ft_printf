@@ -42,7 +42,8 @@ void long_comput_div_two(t_long_num *num)
 		in_memory = temp_in_memory;
 		i++;
 	}
-	num->point++;
+	if (num->num[0])
+		num->point++;
 }
 
 void long_comput_mult_two(t_long_num *num)

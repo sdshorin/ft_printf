@@ -6,7 +6,7 @@ int get_double_num_size(t_param **param, t_long_num *num)
 	int size = 0;
 	if (num->sig || (*param)->plus || (*param)->space)
 		size++;
-	if ((*param)->precision > 0)
+	if ((*param)->precision > 0 || (*param)->hash)
 		size += 1 + (*param)->precision;
 	size += ft_strlen(num->num) - num->point;
 	return (size);
@@ -83,11 +83,11 @@ int print_long_double(t_param **param, t_long_num *num)
 			ft_putchar(num->num[i]);
 		else if (i <= num->point)
 			ft_putchar('0');
-		if (i == num->point && (*param)->precision)
+		if (i == num->point && ((*param)->precision || (*param)->hash))
 			ft_putchar('.');
 		i--;
 	}
 	if ((*param)->precision - num->point > 0)
-		ft_write_char_many('0',(*param)->precision - num->point > 0);
+		ft_write_char_many('0',(*param)->precision - num->point);
 	return get_double_num_size(param, num);
 }

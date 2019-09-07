@@ -51,11 +51,11 @@ void write_o_num(t_param *param, unsigned long long n)
 {
 	int num_size;
 
-	if (n == 0 && param->hash)
+	if (n == 0 && param->hash && param->precision < 1)
 		return ;
 	num_size = ft_o_num_size(n, param);
 	if (param->precision > num_size)
-		ft_write_char_many('0',param->precision - num_size);
+		ft_write_char_many('0', param->precision - num_size);
 	if (param->h == 1)
 		put_o_short_num(n);
 	else if (param->h > 1)

@@ -16,7 +16,7 @@ SOURCE = ft_printf.c list.c param.c parse_param.c  print_format_str.c\
 print_csp.c help_function.c int_command.c int_print.c o_command.c\
 o_print.c u_command.c u_print.c x_command.c x_print.c double_command.c\
 double_long_comput.c double_parse.c double_print.c double_print_nan.c\
-print_percent.c
+print_percent.c p_print.c o_size.c
 
 OBJ = $(patsubst %.c,%.o,$(SOURCE))
 

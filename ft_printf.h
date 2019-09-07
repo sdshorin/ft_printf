@@ -5,7 +5,7 @@
 #include "libft/libft.h"
 #include <stdio.h>
 
-#define LONG_NUM 5000
+#define LONG_NUM 6000
 
 
 typedef struct	s_param {
@@ -20,6 +20,7 @@ typedef struct	s_param {
 	char			plus;
 	int				minimum_size;
 	char			precision;
+	int				ptr_shadow;
 	struct s_param	*next;
 }				t_param;
 
@@ -67,6 +68,9 @@ int ft_num_size(long long n);
 int write_o_prenum(t_param *param);
 void write_o_num(t_param *param, unsigned long long n);
 int ft_o_num_size(unsigned long long n, t_param *param);
+int ft_o_num_size_hh(unsigned char num, t_param *param);
+int ft_o_num_size_h(unsigned short num, t_param *param);
+
 
 
 void write_u_num(t_param *param, unsigned long long n);
